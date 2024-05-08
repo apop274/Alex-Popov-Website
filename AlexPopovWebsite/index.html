@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Text Across Screen</title>
+    <style>
+
+        body, html {
+
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #747474;
+            overflow-x: hidden; /* Hides any horizontal overflow */
+            font-family: Arial, sans-serif;
+
+        }
+        .centered {
+
+            position: absolute; /* Positioning relative to nearest positioned ancestor (here it's body) */
+            width: 100%; /* Full width to ensure text can start from one side */
+            font-size: 72px;
+            color: #442ec4;
+            white-space: nowrap; /* Ensures text does not wrap to next line */
+            animation: slidein 15s linear infinite; /* Defines the animation */
+
+        }
+
+        .position-text {
+
+            position: relative;
+            left: 50px;
+            top: 130px;
+            margin-top: 5-px;
+            font-family: Arial, sans-serif;
+            font-size: 40px;
+            color: #333;
+
+        }
+
+        .link-one-style{
+
+            position: relative;
+            left:50px;
+            top: 140px;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            color: #333;
+        }
+
+        @keyframes slidein {
+
+            from {
+                left: -78%; /* Starts from outside the screen on the left */
+            }
+            to {
+                left: 100%; /* Moves to the outside of the screen on the right */
+            } 
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="centered">
+        Welcome to Alex Popov's Website
+    </div>
+
+    <div>
+        <p class = "position-text"> <span style= "color: rgb(141, 46, 46);">Links:</span></p>
+        <p class = "link-one-style"> <span style = "color: rgb(141, 46,46);"> <a href = "https://discord.gg/F2zdhGmQBn">Apop Mining Discord Link</a></span></p>
+        <p class = "link-one-style"> <span style = "color: rgb(141, 46,46);"> <a href = "https://github.com/apop274">Alex Popov's Github</a></span></p>
+    </div>
+
+    
+</body>
+</html>
