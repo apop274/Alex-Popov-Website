@@ -17,18 +17,18 @@
             margin: 0;
             padding: 0;
             background-color: #747474;
-            overflow-x: hidden; /* Hides any horizontal overflow */
+            overflow-x: hidden; /* hides any horizontal overflow */
             font-family: Arial, sans-serif;
 
         }
         .centered {
 
-            position: absolute; /* Positioning relative to nearest positioned ancestor (here it's body) */
-            width: 100%; /* Full width to ensure text can start from one side */
+            position: absolute; /* positioning relative to nearest positioned ancestor (here it's body) */
+            width: 100%; /* full width to ensure text can start from one side */
             font-size: 72px;
             color: #442ec4;
-            white-space: nowrap; /* Ensures text does not wrap to next line */
-            animation: slidein 15s linear infinite; /* Defines the animation */
+            white-space: nowrap; /* makes sure text does not wrap to next line */
+            animation: slidein 6s linear infinite; /* eefines animation */
 
         }
 
@@ -85,13 +85,24 @@
 
         }
 
+        .apop-link {
+
+            position: relative;
+            left:50px;
+            top: -38px;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            color: #333;
+
+        }
+
         @keyframes slidein {
 
             from {
-                left: -78%; /* Starts from outside the screen on the left */
+                left: -78%; /* starts from outside the screen on the left */
             }
             to {
-                left: 100%; /* Moves to the outside of the screen on the right */
+                left: 100%; /* moves to the outside of the screen on the right */
             } 
 
         }
@@ -104,10 +115,10 @@
         Welcome to Alex Popov's Website
     </div>
 
-    <div class = "container">
+    <div>
         <p class = "position-text"> <span style= "color: rgb(141, 46, 46);">Apop Mining:</span></p>
 
-        <p class = "link-style"> <span style = "color: rgb(141, 46,46);"> <a href = "https://discord.gg/F2zdhGmQBn" target ="_blank">Apop Mining Discord Link</a></span></p>
+        <p class = "link-style"> <span style = "color: rgb(141, 46,46);"> <a href = "https://discord.gg/F2zdhGmQBn" target ="_blank">Apop Mining Discord Link</a></span></p>  
 
         <p class = "link-style"> <span style = "color: rgb(141, 46,46);"> </span></p>
 
@@ -116,6 +127,8 @@
         <p class = "link-style-two"> <span style = "color: rgb(141, 46,46);"> <a href = "https://github.com/apop274" target = "_blank">Alex Popov's Github</a></span> </p>
 
         <p class = "link-style-two"> <span style = "color: rgb(141, 46,46);"> <a href = "https://www.linkedin.com/in/alex-popov-77a971279/" target = "_blank">Alex Popov's LinkedIn</a></span> </p>
+
+        <p class = "apop-link"><a href="apopMiningText.html" target= "_blank">About Apop Mining</a></p>
 
     </div>
 
