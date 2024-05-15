@@ -1,14 +1,13 @@
-<!-- Author: Alex Popov-->
+<!--Author: Alex Popov-->
 <!-- Started on 05.07.24-->
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Popov</title>
+    <title>Alex Popov's Website</title>
     <style>
 
         body, html {
@@ -16,144 +15,110 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color: #db97f0;
-            overflow-x: hidden; /* hides any horizontal overflow */
+            background-color: #d8a3d6; 
             font-family: Arial, sans-serif;
 
         }
-        .centered {
 
-            position: absolute; /* positioning relative to nearest positioned ancestor (here it's body) */
-            width: 100%; 
+
+        .header {
+
+            position: relative;
             font-size: 72px;
             color: #442ec4;
-            white-space: nowrap; /* makes sure text does not wrap to next line */
-            animation: slidein 6s linear infinite; /* eefines animation */
+            margin-top: 50px;
+            white-space: nowrap;
+            animation: slidein 6s linear infinite;
 
         }
 
-        .position-text {
 
-            position: relative;
-            left: 50px;
-            top: 130px;
-            margin-top: 5-px;
-            font-family: Arial, sans-serif;
-            font-size: 40px;
-            color: #333;
+        .container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+
+
+        .section {
+            width: 40%;
+        }
+
+
+        .section h2 {
+            color: rgb(141, 46, 46);
+        }
+
+
+        .section a {
+            color: rgb(34, 34, 170); /* Adjust link color */
+            text-decoration: none;
+            font-size: 18px;
 
         }
 
-        .center-text {
 
-            position: relative;
-            left: 750px;
-            top: 0px;
-            margin-top: 0px;
-            font-family: Arial, sans-serif;
-            font-size: 44px;
-            color: #333;
+        .section a:hover {
+            text-decoration: underline;
         }
 
-        .link-style-two {
 
-            position: relative;
-            left: 750px;
-            top: 12px;
-            font-family: Arial, sans-serif;
-            font-size: 20px;
-            color: #333;
+        .section img {
+
+            display: block;
+            margin: 20px auto;
 
         }
 
-        .link-style-three {
-
-            position: relative;
-            left: 750px;
-           
-            font-family: Arial, sans-serif;
-            font-size: 20px;
-            color: #333;
-
-        }
-
-        .link-style{
-
-            position: relative;
-            left:50px;
-            top: 140px;
-            font-family: Arial, sans-serif;
-            font-size: 20px;
-            color: #333;
-        }
-
-        img {
-
-            position: relative;
-            top: 150px;
-            left: 900px;
-            bottom: 50px;
-
-        }
-
-        .apop-link {
-
-            position: relative;
-            left:50px;
-            top: -85px;
-            font-family: Arial, sans-serif;
-            font-size: 20px;
-            color: #333;
-
-        }
 
         @keyframes slidein {
 
-            from {
-               
+        from {
+   
 
-                left: -78%; 
-            }
-            to {
-                left: 100%; /* moves to the outside of the screen on the right */
-            } 
+            left: -78%; 
+        }
+        to {
+            left: 100%; /* moves to the outside of the screen on the right */
+        } 
 
         }
 
-
     </style>
+
 </head>
+
+
+
 <body>
-    <div class="centered">
+
+    <div class="header">
         Welcome to Alex Popov's Website
     </div>
 
-    <div>
-        <p class = "position-text"> <span style= "color: rgb(141, 46, 46);">Apop Mining:</span></p>
+    <div class="container">
 
-        <p class = "link-style"> <span style = "color: rgb(141, 46,46);"> <a href = "https://discord.gg/F2zdhGmQBn" target ="_blank">Apop Mining Discord Link</a></span></p>  
+        <div class="section">
 
-        
+            <h2>Apop Mining:</h2>
+            <a href="https://discord.gg/CBgwbTQ3Sr" target="_blank">Apop Mining Discord Link</a><br>
+            <a href="apopMiningText.html" target="_blank">About Apop Mining</a>
 
-        <p class = "link-style"> <span style = "color: rgb(141, 46,46);"> </span></p>
+        </div>
 
-        
+        <div class="section">
 
-        <p class = "center-text"><span style = "color: rgb(141, 46,46);">Other Links:</span> </p>
+            <h2>Other Links:</h2>
+            <a href="https://twitter.com/apop274" target="_blank">Twitter</a><br>
+            <a href="https://www.linkedin.com/in/alex-popov-77a971279?trk=people-guest_people_search-card" target="_blank">LinkedIn</a><br>
+            <a href="https://github.com/apop274" target="_blank">Github</a>
 
-        <p class = "link-style-three"><a href="https://twitter.com/apop274" target= "_blank">Twitter</a></p>
-
-        <p class = "link-style-two"> <span style = "color: rgb(141, 46,46);"> <a href = "https://www.linkedin.com/in/alex-popov-77a971279?trk=people-guest_people_search-card" target = "_blank">LinkedIn</a></span> </p>
-
-        <p class = "link-style-two"> <span style = "color: rgb(141, 46,46);"> <a href = "https://github.com/apop274" target = "_blank">Github</a></span> </p>
-
-
-        <p class = "apop-link"><a href="apopMiningText.html" target= "_blank">About Apop Mining</a></p>
-
-
+        </div>
 
     </div>
 
-    
 </body>
+
 </html>
