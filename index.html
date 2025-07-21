@@ -1,62 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alex Popov Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700 text-white font-sans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Popov Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gradient-to-b from-[#0f172a] to-[#1e293b] text-white flex flex-col">
 
-  <div class="max-w-4xl mx-auto px-6 py-12">
-
-    <header class="text-center mb-12">
-      <h1 class="text-5xl font-extrabold text-indigo-300">Alex Popov</h1>
+    <header class="text-center mt-12 mb-8">
+      <h1 class="text-5xl font-extrabold text-indigo-200">Alex Popov</h1>
       <p class="text-lg mt-2 text-gray-300">Physics & Computer Science | University of Redlands</p>
     </header>
 
-    <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-      <a href="rover.html" class="block">
-        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 transition">
-          <h2 class="text-2xl font-semibold mb-2">Rover Project</h2>
-          <p>A Mars rover prototype with a robotic arm and long-range antenna.</p>
-        </div>
-      </a>
-      <a href="opinmarket.html" class="block">
-        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 transition">
-          <h2 class="text-2xl font-semibold mb-2">OpinMarket</h2>
-          <p>A decentralized opinion-based trading platform.</p>
-        </div>
-      </a>
-      <a href="apopmining.html" class="block">
-        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 transition">
-          <h2 class="text-2xl font-semibold mb-2">Apop Mining</h2>
-          <p>Cryptocurrency mining operation using solar-powered GPU and ASIC rigs.</p>
-        </div>
-      </a>
-      <a href="seds.html" class="block">
-        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 transition">
-          <h2 class="text-2xl font-semibold mb-2">SEDS Redlands</h2>
-          <p>University of Redlands space club building rovers and rocketry projects.</p>
-        </div>
-      </a>
+    <main class="flex-grow max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
+      <!-- Card 1 -->
+      <div class="bg-[#334155] rounded-xl shadow-xl p-6 hover:shadow-indigo-500/40 transition cursor-pointer">
+        <h2 class="text-2xl font-semibold mb-2 text-white">Rover Project</h2>
+        <p class="text-sm text-gray-300">A Mars rover prototype with a robotic arm and long-range antenna.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-[#334155] rounded-xl shadow-xl p-6 hover:shadow-indigo-500/40 transition cursor-pointer">
+        <h2 class="text-2xl font-semibold mb-2 text-white">OpinMarket</h2>
+        <p class="text-sm text-gray-300">A decentralized opinion-based trading platform.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-[#334155] rounded-xl shadow-xl p-6 hover:shadow-indigo-500/40 transition cursor-pointer">
+        <h2 class="text-2xl font-semibold mb-2 text-white">Apop Mining</h2>
+        <p class="text-sm text-gray-300">Cryptocurrency mining operation using solar-powered GPU and ASIC rigs.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-[#334155] rounded-xl shadow-xl p-6 hover:shadow-indigo-500/40 transition cursor-pointer">
+        <h2 class="text-2xl font-semibold mb-2 text-white">SEDS Redlands</h2>
+        <p class="text-sm text-gray-300">University of Redlands space club building rovers and rocketry projects.</p>
+      </div>
     </main>
 
-    <footer class="text-center mt-12">
+    <footer class="text-center mt-16 p-6 text-gray-400">
       <div class="flex justify-center gap-6 mb-4">
-        <a href="https://www.linkedin.com/in/alex-popov77" target="_blank" rel="noopener noreferrer" class="text-white hover:text-indigo-300 text-2xl">
-          <i class="ph ph-linkedin-logo"></i>
-        </a>
-        <a href="https://github.com/apop274?tab=repositories" target="_blank" rel="noopener noreferrer" class="text-white hover:text-indigo-300 text-2xl">
-          <i class="ph ph-github-logo"></i>
-        </a>
+        <a href="#" target="_blank" class="hover:text-white text-2xl"><i class="ph ph-linkedin-logo"></i></a>
+        <a href="#" target="_blank" class="hover:text-white text-2xl"><i class="ph ph-github-logo"></i></a>
       </div>
-      <p class="text-sm text-gray-400">&copy; 2025 Alex Popov</p>
+      <p>© 2025 Alex Popov</p>
     </footer>
 
-  </div>
-
-  <!-- Phosphor Icons -->
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-</body>
+  </body>
 </html>
