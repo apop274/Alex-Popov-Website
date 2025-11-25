@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,42 +9,91 @@
 </head>
 <body class="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700 text-white font-sans">
 
-  <div class="max-w-4xl mx-auto px-6 py-12">
+  <div class="max-w-4xl mx-auto px-6 py-10">
 
-    <header class="text-center mb-12">
-      <h1 class="text-5xl font-extrabold text-indigo-300">Alex Popov</h1>
-      <p class="text-lg mt-2 text-gray-300">3/2 Mechanical Engineering: Physics & Computer Science | University of Redlands</p>
+    <!-- Header / Hero -->
+    <header class="flex flex-col items-center text-center mb-10">
+      <!-- Profile picture: replace src with your own image path -->
+      <div class="mb-4">
+        <img
+          src="images/profile.jpg"
+          alt="Alex Popov"
+          class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-indigo-400 shadow-xl"
+        />
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-extrabold text-indigo-300 tracking-tight">
+        Alex Popov
+      </h1>
+      <p class="text-sm md:text-base mt-2 text-gray-300">
+        3/2 Mechanical Engineering · Physics &amp; Computer Science · University of Redlands
+      </p>
+
+      <!-- Simple centered nav -->
+      <nav class="mt-4 flex flex-wrap justify-center gap-4 text-sm md:text-base text-gray-300">
+        <a href="aboutme.html" class="hover:text-indigo-300">About</a>
+        <a href="sedsredlands.html" class="hover:text-indigo-300">SEDS</a>
+        <a href="roboticsdrones.html" class="hover:text-indigo-300">Robotics &amp; Drones</a>
+        <a href="apopmining.html" class="hover:text-indigo-300">Apop Mining</a>
+        <a href="resume.html" class="hover:text-indigo-300">Resume</a>
+      </nav>
     </header>
 
-    <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+    <!-- Short intro -->
+    <section class="mb-10 text-center md:text-left">
+      <p class="text-gray-200">
+        Hands-on student engineer interested in <span class="font-semibold">mechanical and electrical systems, embedded control,
+        UAVs, and robotics</span>. I lead rover, drone, and autonomous robot projects through
+        <strong>SEDS Redlands</strong> and <strong>UoR Robotics &amp; Drones</strong>, building full systems from CAD and hardware
+        to software, control, and data dashboards.
+      </p>
+    </section>
+
+    <!-- Main cards -->
+    <main class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <a href="aboutme.html" class="block">
-        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 transition">
+        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-1 transition">
           <h2 class="text-2xl font-semibold mb-2">About Me</h2>
-          <p>About Alex Popov</p>
+          <p>Summary, education, experience, selected projects, and core skills.</p>
         </div>
       </a>
+
       <a href="sedsredlands.html" class="block">
-        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 transition">
+        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-1 transition">
           <h2 class="text-2xl font-semibold mb-2">SEDS Redlands</h2>
-          <p>University of Redlands space club building rovers and rocketry projects.</p>
+          <p>Cross-functional space club building rovers, rockets, and autonomous systems.</p>
         </div>
       </a>
+
+      <a href="roboticsdrones.html" class="block">
+        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-1 transition">
+          <h2 class="text-2xl font-semibold mb-2">Robotics &amp; Drones</h2>
+          <p>University lab and club work on UAVs, delivery robots, sensing, and control.</p>
+        </div>
+      </a>
+
       <a href="apopmining.html" class="block">
-        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 transition">
+        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-1 transition">
           <h2 class="text-2xl font-semibold mb-2">Apop Mining</h2>
-          <p>Cryptocurrency mining operation using solar-powered GPU and ASIC rigs.</p>
+          <p>Solar-powered cryptocurrency mining with custom frames, control, and HVAC.</p>
         </div>
       </a>
-  
-    
+
+      <a href="resume.html" class="block">
+        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-1 transition">
+          <h2 class="text-2xl font-semibold mb-2">Resume</h2>
+          <p>View or download my full resume as a PDF, including projects and detailed skills.</p>
+        </div>
+      </a>
     </main>
 
+    <!-- Footer -->
     <footer class="text-center mt-12">
-      <div class="flex justify-center gap-6 mb-4">
-        <a href="https://www.linkedin.com/in/alex-popov77" target="_blank" rel="noopener noreferrer" class="text-white hover:text-indigo-300 text-2xl">
+      <div class="flex justify-center gap-6 mb-4 text-2xl">
+        <a href="https://www.linkedin.com/in/alex-popov77" target="_blank" rel="noopener noreferrer" class="text-white hover:text-indigo-300">
           <i class="ph ph-linkedin-logo"></i>
         </a>
-        <a href="https://github.com/apop274" target="_blank" rel="noopener noreferrer" class="text-white hover:text-indigo-300 text-2xl">
+        <a href="https://github.com/apop274" target="_blank" rel="noopener noreferrer" class="text-white hover:text-indigo-300">
           <i class="ph ph-github-logo"></i>
         </a>
       </div>
@@ -56,7 +106,3 @@
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </body>
 </html>
-
-
-
-
