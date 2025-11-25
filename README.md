@@ -1,6 +1,5 @@
 # Alex-Popov-Website
 
 
-This is the code for my personal website. 
-
 Website Link: https://alexpopov.org
+LinkedIn: https://www.linkedin.com/in/alex-popov77
