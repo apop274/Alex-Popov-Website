@@ -1,225 +1,443 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alex Popov Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Alex Popov portfolio featuring engineering, robotics, electronics, CAD, and AI projects."
+    />
+    <title>Alex Popov | Portfolio</title>
 
-<body class="relative bg-[#0a0f1f] text-white font-sans overflow-x-hidden">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- ⭐ STARFIELD + LASERS BACKGROUND -->
-  <div class="absolute inset-0 -z-10">
-    <canvas id="starfield" class="w-full h-full"></canvas>
-  </div>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-  <script>
-    const canvas = document.getElementById("starfield");
-    const ctx = canvas.getContext("2d");
-
-    let stars = [];
-    let lasers = [];
-    const STAR_COUNT = 140;
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      initStars();
-    }
-
-    function initStars() {
-      stars = [];
-      for (let i = 0; i < STAR_COUNT; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 1.5 + 0.3,
-          baseAlpha: 0.3 + Math.random() * 0.5,
-          twinkleSpeed: 0.5 + Math.random() * 1.0,
-          phase: Math.random() * Math.PI * 2
-        });
-      }
-    }
-
-    function spawnLaser() {
-      const side = Math.random(); // spawn from top or left
-      let x, y, vx, vy;
-
-      if (side < 0.5) {
-        // from top going down-right
-        x = Math.random() * canvas.width;
-        y = -20;
-        vx = 4 + Math.random() * 3;
-        vy = 6 + Math.random() * 4;
-      } else {
-        // from left going up-right
-        x = -20;
-        y = Math.random() * canvas.height;
-        vx = 7 + Math.random() * 4;
-        vy = -2 - Math.random() * 3;
-      }
-
-      const colors = ["#22d3ee", "#a855f7", "#f97316"]; // cyan, purple, orange
-      lasers.push({
-        x,
-        y,
-        vx,
-        vy,
-        length: 80 + Math.random() * 80,
-        width: 2 + Math.random() * 2,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        life: 40 + Math.random() * 25
-      });
-    }
-
-    function draw() {
-      // slight fade for motion blur feeling
-      ctx.fillStyle = "rgba(5,10,20,0.6)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      const time = performance.now() / 1000;
-
-      // draw stars (twinkling)
-      for (const s of stars) {
-        const alpha = s.baseAlpha + 0.2 * Math.sin(time * s.twinkleSpeed + s.phase);
-        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // occasionally spawn a laser
-      if (Math.random() < 0.02) { // ~ occasional, not constant
-        spawnLaser();
-      }
-
-      // update & draw lasers
-      for (let i = lasers.length - 1; i >= 0; i--) {
-        const l = lasers[i];
-        l.x += l.vx;
-        l.y += l.vy;
-        l.life--;
-
-        const tailX = l.x - l.vx * (l.length / 10);
-        const tailY = l.y - l.vy * (l.length / 10);
-
-        const alpha = Math.max(0, l.life / 60);
-
-        ctx.strokeStyle = l.color;
-        ctx.lineWidth = l.width;
-        ctx.globalAlpha = alpha;
-
-        ctx.beginPath();
-        ctx.moveTo(tailX, tailY);
-        ctx.lineTo(l.x, l.y);
-        ctx.stroke();
-
-        ctx.globalAlpha = 1.0;
-
-        // remove if off-screen or dead
-        if (
-          l.life <= 0 ||
-          l.x < -100 || l.x > canvas.width + 100 ||
-          l.y < -100 || l.y > canvas.height + 100
-        ) {
-          lasers.splice(i, 1);
-        }
-      }
-
-      requestAnimationFrame(draw);
-    }
-
-    window.addEventListener("resize", resize);
-    resize();
-    requestAnimationFrame(draw);
-  </script>
-  <!-- END BACKGROUND -->
-
-  <div class="max-w-4xl mx-auto px-6 py-16">
-
-    <!-- PROFILE -->
-    <div class="flex flex-col items-center text-center mb-10">
-      <img src="images/profile.jpg" class="w-32 h-32 rounded-full shadow-xl object-cover mb-4" alt="Alex Popov">
-      <h1 class="text-5xl font-extrabold text-indigo-300">Alex Popov</h1>
-      <p class="text-lg mt-1 text-gray-300">
-        3/2 Engineering · Physics &amp; Computer Science · University of Redlands
-      </p>
-
-      <!-- NAV LINKS -->
-      <nav class="flex flex-wrap justify-center gap-6 mt-4 text-indigo-300 font-medium">
-        <a href="aboutme.html" class="hover:text-indigo-200">About</a>
-        <a href="sedsredlands.html" class="hover:text-indigo-200">SEDS</a>
-        <a href="roboticsdrones.html" class="hover:text-indigo-200">Robotics &amp; Drones</a>
-        <a href="apopmining.html" class="hover:text-indigo-200">Apop Mining</a>
-        <a href="resume.html" class="hover:text-indigo-200">Resume</a>
-      </nav>
+    <div class="ip-badge" data-ip-badge>
+      <span class="ip-badge__label">Your IP</span>
+      <span class="ip-badge__value" data-ip-value>Loading…</span>
+      <button class="ip-badge__btn" type="button" data-ip-reveal>
+        Show PubIP
+      </button>
     </div>
 
-    <!-- INTRO -->
-    <p class="text-center text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-      I’m a hands-on student engineer pursuing a career as an electromechanical engineer in the aerospace industry. 
-      I currently serve as President of SEDS Redlands and UoR Robotics & Drones at the University of Redlands, where I lead rover, drone, and autonomous 
-      systems projects from mechanical CAD and fabrication to embedded control.
-    </p>
+    <div class="bg-orbs" aria-hidden="true">
+      <span class="orb orb--1"></span>
+      <span class="orb orb--2"></span>
+      <span class="orb orb--3"></span>
+    </div>
 
-    <!-- MAIN BOXES -->
-    <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+    <header class="site-header" data-header>
+      <div class="scroll-progress" aria-hidden="true">
+        <div class="scroll-progress__bar" data-scroll-progress></div>
+      </div>
+      <nav class="nav container" aria-label="Primary">
+        <a class="brand" href="#top" aria-label="Home">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__text">Alex Popov</span>
+        </a>
 
-      <a href="aboutme.html" class="block">
-        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 transition">
-          <h2 class="text-2xl font-semibold mb-2">About Me</h2>
-          <p>Summary, education, experience, selected projects, and core skills.</p>
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="nav__toggle-bars" aria-hidden="true"><span></span></span>
+        </button>
+
+        <div class="nav__links" data-nav-links>
+          <a href="#projects">Projects</a>
+          <a href="#leadership">Leadership</a>
+          <a href="#skills">Skills</a>
+          <a href="#about">About</a>
+          <a class="btn btn--sm" href="#contact">Contact</a>
         </div>
-      </a>
+      </nav>
+    </header>
 
-      <a href="sedsredlands.html" class="block">
-        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 transition">
-          <h2 class="text-2xl font-semibold mb-2">SEDS Redlands</h2>
-          <p>Cross-functional space club building rovers, rockets, and autonomous systems.</p>
+    <main id="main">
+      <section id="top" class="hero">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="container hero__grid">
+          <div class="hero__copy">
+          
+            <h1 class="hero__title">Alex Popov</h1>
+            <p class="hero__subtitle">
+              3/2 Engineering Physics and Computer Science student at University of Redlands. I work
+              across CAD, electronics, 3D printing, and AI, and I enjoy leading teams that build robotic systems and engineering projects.
+            </p>
+            <div class="hero__cta">
+              <a class="btn" href="#projects">View projects</a>
+              <a class="btn btn--ghost" href="#contact">Get in touch</a>
+              <a class="btn btn--ghost" href="#about">About me</a>
+            </div>
+
+            <div class="hero__meta">
+             
+              <div class="hero__quick">
+                <a href="#" data-placeholder-link>Resume (PDF)</a>
+                <span class="sep" aria-hidden="true">•</span>
+                <a href="https://www.linkedin.com/in/alex-popov77" rel="noreferrer">LinkedIn</a>
+                <span class="sep" aria-hidden="true">•</span>
+                <a href="https://github.com/apop274" rel="noreferrer">GitHub</a>
+                <span class="sep" aria-hidden="true">•</span>
+                <!--<a href="https://alexpopov.org" rel="noreferrer">Website</a>  -->
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__card" aria-label="Profile image">
+            <div class="media media--square">
+              <img
+                src="./assets/alex-popov.png"
+                alt="Portrait photo of Alex Popov"
+                loading="eager"
+              />
+            </div>
+            <div class="hero__card-body">
+              <p class="hero__card-title">Alex Popov</p>
+              <p class="hero__card-subtitle">University of Redlands</p>
+            </div>
+          </div>
         </div>
-      </a>
+      </section>
 
-      <a href="roboticsdrones.html" class="block">
-        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 transition">
-          <h2 class="text-2xl font-semibold mb-2">UoR Robotics &amp; Drones</h2>
-          <p>University lab and club work on UAVs, delivery robots, sensing, and control.</p>
+      <section id="projects" class="section">
+        <div class="container">
+          <div class="section__head">
+            <h2>Projects</h2>
+           
+          </div>
+
+          <div class="grid cards">
+            <article class="card reveal">
+              <div class="card__media media">
+                <img
+                  src="./assets/doppler-device.png"
+                  alt="CAD render of a 3D printed doppler shift measuring device"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card__body">
+                <h3>3D Printed Doppler Shift Measuring Device</h3>
+                <p class="muted">
+                  Physics capstone: crank-slider linear actuator + HB100 microwave sensor to measure
+                  doppler shift. Custom mechanical design, analog front-end, and ESP32 data capture.
+                </p>
+
+                <ul class="bullets">
+                  <li><strong>Mechanism</strong>: 3D printed crank-slider for controlled linear motion</li>
+                  <li><strong>Sensing</strong>: HB100 IF output (mV-level) with metal target reflector</li>
+                  <li><strong>Analog</strong>: biasing + op-amp amplification to reach MCU-readable levels</li>
+                  <li>
+                    <strong>Data</strong>: ESP32 streams waveform to a computer; oscilloscope used for
+                    final frequency/amplitude measurements
+                  </li>
+                </ul>
+
+                <div class="tags">
+                  <span class="tag">SolidWorks</span>
+                  <span class="tag">3D printing</span>
+                  <span class="tag">Op-amps</span>
+                  <span class="tag">ESP32</span>
+                  <span class="tag">Instrumentation</span>
+                </div>
+
+                <div class="card__links">
+                 <!-- <a class="link" href="#" data-placeholder-link>Photos</a>
+                  <a class="link" href="#" data-placeholder-link>Design files</a>
+                  <a class="link" href="#" data-placeholder-link>Demo video</a>-->
+                </div>
+              </div>
+            </article>
+
+            <article class="card reveal">
+              <div class="card__media media">
+                <img
+                  src="./assets/rover-workshop.png"
+                  alt="Rover build session in a workshop"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card__body">
+                <h3>Multiterrain Aluminum Rover</h3>
+                <p class="muted">
+                  SEDS structural rover: custom 5052 aluminum frame, jackshafts, drivetrain, and
+                  field-range telemetry. Led mechanical design, assembly, plus electrical + comms.
+                </p>
+
+                <ul class="bullets">
+                  <li><strong>Frame</strong>: 5052 structural aluminum + corner brackets</li>
+                  <li><strong>Drivetrain</strong>: 24V motors (~24Nm/mot) with custom jackshafts</li>
+                  <li>
+                    <strong>Power</strong>: terminal distribution blocks → buck converters, motor drivers,
+                    logic electronics, and drivetrain
+                  </li>
+                  <li><strong>Comms</strong>: rover telemetry range ~740m (field tested)</li>
+                </ul>
+
+                <div class="tags">
+                  <span class="tag">CAD</span>
+                  <span class="tag">Machining</span>
+                  <span class="tag">Power distribution</span>
+                  <span class="tag">Motor control</span>
+                  <span class="tag">Telemetry</span>
+                </div>
+
+                <div class="card__links">
+                  <a class="link" href="#" data-placeholder-link>Build log</a>
+                  <a class="link" href="#" data-placeholder-link>Wiring diagram</a>
+                  <a class="link" href="#" data-placeholder-link>Field tests</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card reveal">
+              <div class="card__media media">
+                <img
+                  src="./assets/urbansoundai-spectrogram.png"
+                  alt="Mel spectrogram visualization from UrbanSoundAI"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card__body">
+                <h3>UrbanSoundAI (CNN + Spectrogram Generator)</h3>
+                <p class="muted">
+                  Trained a CNN on UrbanSound8K to classify sound sources (dog bark, drilling, sirens,
+                  and more). Generates spectrograms from audio and runs inference on them.
+                </p>
+
+                <ul class="bullets">
+                  <li><strong>Data</strong>: UrbanSound8K</li>
+                  <li><strong>Pipeline</strong>: audio → spectrogram → CNN classification</li>
+                  <li><strong>Output</strong>: predicted class with confidence + visual spectrogram</li>
+                </ul>
+
+                <div class="tags">
+                  <span class="tag">Python</span>
+                  <span class="tag">CNN</span>
+                  <span class="tag">Audio DSP</span>
+                  <span class="tag">Spectrograms</span>
+                </div>
+
+                <div class="card__links">
+                  <a class="link" href="#" data-placeholder-link>Notebook</a>
+                  <a class="link" href="#" data-placeholder-link>Model card</a>
+                  <a class="link" href="#" data-placeholder-link>Demo</a>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
-      </a>
+      </section>
 
-      <a href="apopmining.html" class="block">
-        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 transition">
-          <h2 class="text-2xl font-semibold mb-2">Apop Mining</h2>
-          <p>Solar-powered cryptocurrency mining with custom frames, control, and HVAC.</p>
+      <section id="leadership" class="section section--alt">
+        <div class="container">
+          <div class="section__head">
+            <h2>Leadership</h2>
+           
+          </div>
+
+          <div class="grid leadership">
+            <article class="panel reveal">
+              <h3>President, UoR Robotics &amp; Drones</h3>
+              <p class="muted">September 2025–Present</p>
+              <p class="muted">
+                Focused on drones, applied AI/CNNs, and student engineering projects. Past builds
+                include AI smart cars with LiDAR + ROS object recognition.
+              </p>
+              <ul class="bullets bullets--compact">
+                <li><strong>Builds</strong>: drones, AI smart cars, perception systems</li>
+                <li><strong>Support</strong>: fund and mentor student engineering projects</li>
+                <li><strong>Execution</strong>: turn ideas into roadmaps and weekly progress</li>
+              </ul>
+            </article>
+
+            <article class="panel reveal">
+              <h3>President, SEDS Redlands</h3>
+              <p class="muted">February 2024–Present</p>
+              <p class="muted">
+                Students for the Exploration and Development of Space. We build hardware (like the rover), do
+                rocketry, and attend SpaceVision and industry networking events.
+              </p>
+              <ul class="bullets bullets--compact">
+                <li><strong>Programs</strong>: rocketry build + launch, rover development</li>
+                <li><strong>Community</strong>: SpaceVision + networking events</li>
+                <li><strong>Mission</strong>: help students enter the space industry</li>
+              </ul>
+            </article>
+          </div>
         </div>
-      </a>
+      </section>
 
-      <a href="resume.html" class="block">
-        <div class="rounded-3xl bg-white/5 backdrop-blur-md text-white p-8 shadow-xl hover:shadow-indigo-500/30 transition">
-          <h2 class="text-2xl font-semibold mb-2">Resume</h2>
-          <p>View or download my full resume as a PDF, including projects and detailed skills.</p>
+      <section id="skills" class="section">
+        <div class="container">
+          <div class="section__head">
+            <h2>Skills</h2>
+            
+          </div>
+
+          <div class="grid skills">
+            <div class="skill reveal">
+              <h3>Mechanical / CAD</h3>
+              <p class="muted">
+                SolidWorks, Onshape, AutoCAD, rotational mechanics, crank mechanism design, simulations,
+                MATLAB.
+              </p>
+              <div class="tags">
+                <span class="tag">SolidWorks</span>
+                <span class="tag">Onshape</span>
+                <span class="tag">AutoCAD</span>
+                <span class="tag">Rotational mechanics</span>
+                <span class="tag">Crank mechanisms</span>
+                <span class="tag">Simulations</span>
+                <span class="tag">MATLAB</span>
+              </div>
+            </div>
+
+            <div class="skill reveal">
+              <h3>Electronics</h3>
+              <p class="muted">
+                Circuit design, PCB design, LTSpice and other simulation software, Altium Designer,
+                oscilloscopes, soldering.
+              </p>
+              <div class="tags">
+                <span class="tag">Analog</span>
+                <span class="tag">PCB design</span>
+                <span class="tag">LTSpice</span>
+                <span class="tag">Altium Designer</span>
+                <span class="tag">Oscilloscopes</span>
+                <span class="tag">Soldering</span>
+              </div>
+            </div>
+
+            <div class="skill reveal">
+              <h3>Software / AI</h3>
+              <p class="muted">Python, deep learning (CNNs), signal processing, embedded workflows.</p>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">ML</span>
+                <span class="tag">DSP</span>
+                <span class="tag">Embedded</span>
+              </div>
+            </div>
+
+            <div class="skill reveal">
+              <h3>Leadership</h3>
+              <p class="muted">
+                Planning, communication, and coordinating multidisciplinary work.
+              </p>
+              <div class="tags">
+                <span class="tag">Team lead</span>
+                <span class="tag">Roadmapping</span>
+                <span class="tag">Mentorship</span>
+                <span class="tag">Execution</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </a>
+      </section>
 
+      <section id="about" class="section section--alt">
+        <div class="container">
+          <div class="section__head">
+            <h2>About</h2>
+           
+          </div>
+
+          <div class="grid about">
+            <div class="panel reveal">
+              <h3>What I’m into</h3>
+              <ul class="bullets">
+                <li><strong>Instrumentation</strong>: turning tiny signals into reliable data</li>
+                <li><strong>Robotics</strong>: mechanical systems + electronics + field testing</li>
+                <li><strong>AI</strong>: useful models with clear visual/quantitative outputs</li>
+              </ul>
+            </div>
+            <div class="panel reveal">
+              <h3>What I bring</h3>
+              <ul class="bullets">
+                <li><strong>End-to-end ownership</strong>: CAD → build → wiring → firmware/software</li>
+                <li><strong>Practical debugging</strong>: oscilloscope, multimeter, logs, iteration</li>
+                <li><strong>Team leadership</strong>: set direction, unblock people, deliver results</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="section__head">
+            <h2>Contact</h2>
+            <!--<p>Drop your links below and this section becomes “ready to send.”</p> -->
+          </div>
+
+          <div class="grid contact">
+            <div class="panel reveal">
+             <!-- <h3>Let’s build something</h3>
+              <p class="muted">
+                Best way to reach me is email. I’m also active on LinkedIn for opportunities and
+                collaborations.
+              </p> -->
+              <div class="contact__links">
+                <a class="btn" href="mailto:alexpopov4224@gmail.com">alexpopov4224@gmail.com</a>
+                <a
+                  class="btn btn--ghost"
+                  href="https://www.linkedin.com/in/alex-popov77"
+                  rel="noreferrer"
+                >
+                  LinkedIn
+                </a>
+                <a class="btn btn--ghost" href="https://github.com/apop274" rel="noreferrer">GitHub</a>
+              </div>
+              <p class="fineprint">
+                
+              </p>
+            </div>
+
+           <!-- <form class="panel reveal form" name="contact" netlify>
+              <h3>Quick message</h3>
+              <label class="field">
+                <span>Name</span>
+                <input name="name" autocomplete="name" required />
+              </label>
+              <label class="field">
+                <span>Email</span>
+                <input name="email" type="email" autocomplete="email" required />
+              </label>
+              <label class="field">
+                <span>Message</span>
+                <textarea name="message" rows="5" required></textarea>
+              </label>
+              <button class="btn" type="submit">Send</button>
+              <p class="fineprint">
+                This form works automatically if you deploy to Netlify (optional).
+              </p>
+            </form> -->
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="text-center mt-12">
-      <div class="flex justify-center gap-6 mb-4 text-2xl text-indigo-300">
-        <a href="https://www.linkedin.com/in/alex-popov77" target="_blank" class="hover:text-indigo-200"><i class="ph ph-linkedin-logo"></i></a>
-        <a href="https://github.com/apop274" target="_blank" class="hover:text-indigo-200"><i class="ph ph-github-logo"></i></a>
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <p class="footer__brand">Alex Popov</p>
+          <!--<p class="muted">Engineering portfolio • Built as a fast static site.</p> -->
+        </div>
+        <div class="footer__links">
+          <a href="#top">Top</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
       </div>
-      <p class="text-sm text-gray-400">&copy; 2025 Alex Popov</p>
     </footer>
-
-  </div>
-
-  <!-- Phosphor Icons -->
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-</body>
+  </body>
 </html>
-
-
-
-
