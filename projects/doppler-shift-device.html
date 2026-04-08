@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Physics capstone: HB100 Doppler sensor, crank–slider deflector, Hall-effect crank indexing, and oscilloscope correlation for instantaneous velocity vs. crank angle."
+    />
+    <title>Doppler shift device | Alex Popov</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <nav class="nav container" aria-label="Primary">
+        <a class="brand" href="../index.html#top" aria-label="Alex Popov home">Alex Popov</a>
+
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="nav__toggle-bars" aria-hidden="true"><span></span></span>
+        </button>
+
+        <div class="nav__links" data-nav-links>
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#leadership">Leadership</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main" class="case-study">
+      <div class="container case-study__wrap">
+        <nav class="case-breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html#projects">← Portfolio</a>
+          <span class="case-breadcrumb__sep" aria-hidden="true">/</span>
+          <span class="case-breadcrumb__here">Doppler instrumentation</span>
+        </nav>
+
+        <header class="case-study__header reveal">
+          <h1 class="case-study__title">Instantaneous Velocity Crank Slider Measurement Device Experiment</h1>
+          <p class="case-study__meta">
+            Physics capstone · Experimental instrumentation · Draft case study
+          </p>
+          <p class="case-study__lede">
+            A 3D-printed crank–slider drives a deflector linearly while a stationary HB100 sensor
+            measures Doppler-related IF content. Magnets and paired Hall sensors resolve crank angle, so
+            HB100 shifts can be tied to specific phases of a non-uniform motion law and
+            interpreted in terms of instantaneous velocity—validated on the bench with
+            a multi-channel oscilloscope alongside MCU logging.
+          </p>
+        </header>
+
+        <section class="case-section case-section--paper reveal" id="paper">
+          <h2 class="case-section__label">Capstone paper</h2>
+          <div class="case-section__prose">
+            
+          </div>
+
+          <div class="pdf-panel">
+            <div class="pdf-panel__toolbar">
+              <a
+                class="btn-download"
+                href="../assets/papers/doppler-shift-capstone.pdf"
+                download="Alex-Popov-Doppler-Capstone.pdf"
+              >
+                Download PDF
+              </a>
+              <a
+                class="btn-download btn-download--ghost"
+                href="../assets/papers/doppler-shift-capstone.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open in new tab
+              </a>
+            </div>
+            <iframe
+              class="pdf-panel__frame"
+              title="Capstone paper PDF"
+              src="../assets/papers/doppler-shift-capstone.pdf"
+            ></iframe>
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="overview">
+          <h2 class="case-section__label">Overview</h2>
+          <div class="case-section__prose">
+            <p>
+              The capstone ties together <strong>mechanical kinematics</strong>, <strong>microwave
+              motion sensing</strong>, <strong>magnetic angle referencing</strong>, and
+              <strong>mixed-signal measurement</strong>. A crank–slider (rotating disk plus translating
+              rod) moves a deflector back-and-forth linearly; the HB100 is fixed on the vertical
+              beam and looks at that motion. Because the linkage consists of a linear rod and a symmetric disk, the slider's velocity is non-uniform and the radial/phase dependence of speed matters: the scientific objective is to
+              relate Doppler shifts to <strong>where the crank is</strong>(what the crank angle is) and thus to the
+              <strong>instantaneous</strong> target velocity implied by the mechanism at that moment in rotation. By observing the instantaneous velocities at certain crank angles,
+              we can confirm if the slider's motion is non-uniform.
+            </p>
+            
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="hardware">
+          <h2 class="case-section__label">Hardware setup</h2>
+          <div class="case-section__prose">
+            <ul class="case-list">
+              <li>
+                <strong>HB100 (stationary)</strong> — mounted on the vertical beam, aimed at the moving
+                microwave target / deflector driven by the crank–slider.
+              </li>
+              <li>
+                <strong>Crank–slider mechanism</strong> — rotary input produces back-and-forth motion of
+                the deflector along the linkage (disk + linear rod), giving a <em>non-uniform</em> velocity
+                profile over each cycle.
+              </li>
+              <li>
+                <strong>Deflector / target</strong> — an aluminum plate is mounted to the slider and deflects the microwaves as it moves back and forth.
+                It's important for it to be metal, otherwise the microwaves can easily pass through the ABS filament
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="indexing">
+          <h2 class="case-section__label">Crank angle &amp; Hall sensors</h2>
+          <div class="case-section__prose">
+            <p>
+              Under the rotating disk, <strong>magnets</strong> are arranged so their passage can be
+              detected by a hall sensor from below. A <strong>Hall sensor</strong> produces pulses as magnets sweep by,
+              giving repeatable angular events within a revolution.
+            </p>
+            <p>
+              A <strong>second, reference Hall sensor</strong> provides a distinct phase reference so the
+              system can resolve <strong>where the crank is in rotation</strong>.
+              
+            </p>
+            <p>
+              Together, these channels support registering HB100 observations to specific crank
+              positions when you analyze non-uniform motion.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="bench">
+          <h2 class="case-section__label">Bench instrumentation</h2>
+          <div class="case-section__prose">
+            <p>
+              An oscilloscope is used with three inputs observed together:
+            </p>
+            <ul class="case-list">
+              <li><strong>HB100 IF output</strong> — Doppler-related signal from the module.</li>
+              <li><strong>Hall (index)</strong> — pulses from the magnet-pass sensor.</li>
+              <li><strong>Reference Hall</strong> — signal defining rotational position / phase reference.</li>
+            </ul>
+            <p>
+              Viewing these traces in parallel is what lets you relate shifts in the HB100 waveform to
+              <strong>specific crank angles</strong> and to the timing structure of the mechanism, and to
+              compare against ESP32-captured waveforms where applicable.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="science">
+          <h2 class="case-section__label">Measurement goal</h2>
+          <div class="case-section__prose">
+            <p>
+              Because the crank–slider produces <strong>non-uniform</strong> motion, instantaneous speed
+              (and thus the Doppler-relevant velocity component you care about) varies with crank angle.
+              The experimental approach is to <strong>measure HB100 frequency or shift content at known
+              crank angles</strong>—using the Hall timing and reference—to infer or constrain
+              <strong>instantaneous velocity</strong> for that linkage geometry, rather than assuming
+              constant linear speed.
+            </p>
+            
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="method">
+          <h2 class="case-section__label">R&amp;D workflow (lab)</h2>
+          <div class="case-section__prose">
+            <ol class="case-steps">
+              <li><strong>Mechanism</strong> — CAD, 3D printing, mechanical tuning for travel, magnet placement, and sensor clearance.</li>
+              <li><strong>Microwave path</strong> — HB100 mounting and aim; IF conditioning to usable levels for scope and MCU.</li>
+              <li><strong>Indexing</strong> — Hall + reference Hall wiring and verification of angular reference.</li>
+              <li><strong>Correlation</strong> — multi-channel scope captures; align HB100 features to crank phase.</li>
+              <li><strong>Logging</strong> — ESP32 stream to host where used; cross-check against scope traces.</li>
+              <li><strong>Analysis</strong> — relate shifts to crank angle and instantaneous-velocity interpretation; document uncertainty.</li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="figures">
+          <h2 class="case-section__label">Figures</h2>
+         
+
+          <figure class="media-placeholder">
+            <div class="media-placeholder__frame media-placeholder__frame--16x9">
+              <img
+                src="../assets/doppler/crank-slider-demo-photo.png"
+                alt="Crank–slider demonstration hardware: HB100 on the vertical beam and deflector motion path"
+                loading="lazy"
+              />
+            </div>
+            <figcaption class="media-placeholder__cap">
+              Stationary HB100 on the vertical member; crank–slider driving the deflector back-and-forth in front of HB100 which causes the the emitted microwaves
+              to either stretch or compress causing a change in frequency according to Doppler theory.
+            </figcaption>
+          </figure>
+
+          <figure class="media-placeholder">
+            <div class="media-placeholder__frame media-placeholder__frame--4x3">
+              <span class="media-placeholder__tag">Placeholder — underside: magnets + dual Hall layout</span>
+            </div>
+            <figcaption class="media-placeholder__cap">
+              Magnet pattern under the disk with crank angles shown. An oscilloscope display showing channel 1 mixed with channel 2.
+            </figcaption>
+          </figure>
+
+          <figure class="media-placeholder">
+            <div class="media-placeholder__frame media-placeholder__frame--16x9">
+              <span class="media-placeholder__tag">Placeholder — oscilloscope (3ch): HB100, Hall, ref Hall</span>
+            </div>
+            <figcaption class="media-placeholder__cap">
+              Screenshot showing HB100 IF together with both Hall channels for angle-aligned shift measurements.
+            </figcaption>
+          </figure>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="footer__copy">© 2026 Alex Popov</p>
+        <div class="footer__links">
+          <a href="../index.html#top">Top</a>
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
