@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Glenair R&D RF internship case study: an end-to-end TE101 microwave cavity resonator instrument for estimating RF-cable dielectric constant from VNA-measured resonance shifts."
+    />
+    <title>Microwave cavity resonator | Alex Popov</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <nav class="nav container" aria-label="Primary">
+        <a class="brand" href="../index.html#top" aria-label="Alex Popov home">Alex Popov</a>
+
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="nav__toggle-bars" aria-hidden="true"><span></span></span>
+        </button>
+
+        <div class="nav__links" data-nav-links>
+          <a href="../index.html#experience">Experience</a>
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#leadership">Leadership</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main" class="case-study">
+      <div class="container case-study__wrap case-study__wrap--wide">
+        <nav class="case-breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html#experience">← Glenair experience</a>
+          <span class="case-breadcrumb__sep" aria-hidden="true">/</span>
+          <span class="case-breadcrumb__here">Microwave cavity resonator</span>
+        </nav>
+
+        <header class="case-study__header reveal">
+          <div class="case-brand">
+            <img src="../assets/glenair-logo.png" alt="Glenair" />
+            <span>R&amp;D RF Engineering Internship · June 1 – August 21, 2026</span>
+          </div>
+          <h1 class="case-study__title">
+            Microwave Cavity Resonator for RF-Cable Dielectric Characterization
+          </h1>
+          <p class="case-study__meta">
+            Instrument design · ANSYS HFSS · VNA measurements · Python analysis · Cavity perturbation
+          </p>
+          <p class="case-study__lede">
+            I took this instrument from first-principles design through simulation, machining,
+            bench testing, and analysis software. Its purpose was to show that a wire-insert
+            microwave cavity could estimate the effective dielectric constant of insulation used
+            in finished RF cable constructions—not merely show that two samples looked different.
+          </p>
+        </header>
+
+        <figure class="case-figure case-figure--hero reveal">
+          <img
+            src="../assets/cavity/resonator-angle.jpg"
+            alt="Machined aluminum microwave cavity resonator with two SMA coupling ports"
+            width="1890"
+            height="1364"
+          />
+          <figcaption>
+            The completed two-port aluminum cavity, machined from my CAD and assembled with SMA
+            electric-field probes.
+          </figcaption>
+        </figure>
+
+        <section class="case-section reveal" aria-labelledby="results-at-a-glance">
+          <h2 class="case-section__label" id="results-at-a-glance">Results at a glance</h2>
+          <div class="case-metrics">
+            <div class="case-metric">
+              <strong>10.25 <span>GHz</span></strong>
+              <p>Measured empty-cavity primary resonance</p>
+            </div>
+            <div class="case-metric">
+              <strong>10.56 <span>GHz</span></strong>
+              <p>ANSYS primary-mode prediction</p>
+            </div>
+            <div class="case-metric">
+              <strong>1.60</strong>
+              <p>Estimated 80-thou ePTFE effective permittivity</p>
+            </div>
+            <div class="case-metric">
+              <strong>1.18<span>%</span></strong>
+              <p>Difference from cable velocity-factor result</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="objective">
+          <h2 class="case-section__label">Objective</h2>
+          <div class="case-section__prose case-section__prose--measure">
+            <p>
+              The project asked whether a compact RF instrument could recover a useful dielectric
+              constant from actual cable-insulation constructions. PTFE tape stretch, overlap,
+              porosity, compression, and trapped air all affect the electromagnetic behavior of a
+              finished cable, so a bulk-material datasheet value does not necessarily describe the
+              construction that is manufactured.
+            </p>
+            <p>
+              I designed a rectangular cavity around the TE<sub>101</sub> mode, passed insulated
+              conductor samples through its strongest practical electric-field region, and measured
+              the shift in its S<sub>21</sub> transmission resonance. Combining that shift with the
+              fraction of the cavity’s electric-field energy interacting with the dielectric made it
+              possible to estimate the sample’s effective relative permittivity.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="scope">
+          <h2 class="case-section__label">My end-to-end scope</h2>
+          <div class="case-scope-grid">
+            <article>
+              <span>01</span>
+              <h3>Designed</h3>
+              <p>Derived the TE<sub>101</sub> dimensions and probe locations, then built the complete mechanical assembly in SolidWorks.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Simulated</h3>
+              <p>Imported the design into ANSYS HFSS to check resonant modes and electric-field placement before committing to hardware.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Fabricated</h3>
+              <p>Prepared the design for machining and had the cavity manufactured from 6061 aluminum by Protolabs.</p>
+            </article>
+            <article>
+              <span>04</span>
+              <h3>Measured</h3>
+              <p>Calibrated and ran two-port S-parameter tests on an Anritsu MS46524B VNA with empty, FEP, and ePTFE configurations.</p>
+            </article>
+            <article>
+              <span>05</span>
+              <h3>Automated</h3>
+              <p>Developed a Python UI to parse Touchstone s2p exports, overlay traces, annotate frequencies, and export analysis plots.</p>
+            </article>
+            <article>
+              <span>06</span>
+              <h3>Validated</h3>
+              <p>Applied cavity perturbation theory and compared the calculated ePTFE result with an independent cable velocity-factor value.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="principle">
+          <h2 class="case-section__label">How the measurement works</h2>
+          <div class="case-section__prose case-section__prose--measure">
+            <p>
+              Port 1 excites the cavity through one SMA probe and Port 2 observes the coupled field
+              through the second. At a resonant mode, S<sub>21</sub> rises because more energy is
+              transmitted between the ports; an S<sub>11</sub> dip at approximately the same
+              frequency provides supporting evidence that less energy is being reflected at Port 1.
+              I used the S<sub>21</sub> peak to identify the resonance because it directly shows
+              transmission through the cavity.
+            </p>
+            <p>
+              When dielectric surrounds the wire inside the electric field, it increases the stored
+              electric energy and moves the resonance downward. The shift is larger when the material
+              has higher permittivity or when more of the electric field interacts with it. That
+              interaction is represented by the electric-energy filling factor, η<sub>E</sub>.
+            </p>
+          </div>
+
+          <div class="case-equation" aria-label="Cavity perturbation approximation">
+            <span>ε′ ≈ 1 −</span>
+            <span class="case-equation__fraction">
+              <span>2</span>
+              <span>η<sub>E</sub></span>
+            </span>
+            <span class="case-equation__fraction">
+              <span>f<sub>sample</sub> − f<sub>empty</sub></span>
+              <span>f<sub>empty</sub></span>
+            </span>
+          </div>
+          <p class="case-equation__note">
+            The prototype estimated η<sub>E</sub> from the dielectric-to-cavity volume fraction and
+            the TE<sub>101</sub> electric-field distribution. This turns a measured S<sub>21</sub>
+            resonance shift into an estimate of effective relative permittivity, ε′.
+          </p>
+        </section>
+
+        <section class="case-section reveal" id="design">
+          <h2 class="case-section__label">Analytical design and CAD</h2>
+          <div class="case-specs">
+            <div><span>Mode</span><strong>Rectangular TE<sub>101</sub></strong></div>
+            <div><span>Internal dimensions</span><strong>30 × 12 × 16.2 mm</strong></div>
+            <div><span>Calculated resonance</span><strong>10.523 GHz</strong></div>
+            <div><span>Construction</span><strong>6061 aluminum, bolted lid, two SMA probes</strong></div>
+            <div><span>Sample path</span><strong>Wire inserted lengthwise through 2 mm wall openings</strong></div>
+            <div><span>Useful test band</span><strong>10–18 GHz, limited by the SMA connector rating</strong></div>
+          </div>
+          <div class="case-section__prose case-section__prose--measure">
+            <p>
+              The TE<sub>101</sub> mode makes the cavity electric field perpendicular to the wire axis,
+              approximating the radial electric-field relationship that matters in a coaxial cable.
+              Packaging constraints prevented the mathematically ideal probe locations, so I moved
+              the probes to practical positions at 3a/8 and 5a/8 while retaining roughly 65% of the
+              maximum field magnitude at the coupling locations.
+            </p>
+          </div>
+
+          <div class="case-gallery case-gallery--two">
+            <figure class="case-figure">
+              <div class="case-figure__media case-figure__media--contain">
+                <img src="../assets/cavity/cad-render.png" alt="SolidWorks rendering of the assembled cavity resonator" width="957" height="683" loading="lazy" />
+              </div>
+              <figcaption>SolidWorks assembly prepared for machining and hardware integration.</figcaption>
+            </figure>
+            <figure class="case-figure">
+              <div class="case-figure__media case-figure__media--contain">
+                <img src="../assets/cavity/cavity-cross-section.png" alt="Cross-section CAD drawing showing SMA probes entering the cavity" width="914" height="672" loading="lazy" />
+              </div>
+              <figcaption>Cross-section showing probe penetration, lid thickness, and the wire-insert path.</figcaption>
+            </figure>
+          </div>
+
+          <figure class="case-figure case-figure--wide">
+            <div class="case-figure__media case-figure__media--contain case-figure__media--diagram">
+              <img src="../assets/cavity/probe-placement.png" alt="Dimensioned top view of the cavity probe and fastener placement" width="1330" height="787" loading="lazy" />
+            </div>
+            <figcaption>Dimensioned probe placement used to balance field coupling with SMA hardware clearance.</figcaption>
+          </figure>
+        </section>
+
+        <section class="case-section reveal" id="simulation">
+          <h2 class="case-section__label">ANSYS electromagnetic simulation</h2>
+          <div class="case-media-split">
+            <figure class="case-figure">
+              <div class="case-figure__media case-figure__media--contain case-figure__media--simulation">
+                <img src="../assets/cavity/ansys-electric-field.png" alt="ANSYS HFSS electric-field simulation inside the rectangular cavity" width="483" height="285" loading="lazy" />
+              </div>
+              <figcaption>ANSYS HFSS electric-field result for the modeled cavity.</figcaption>
+            </figure>
+            <div class="case-section__prose">
+              <p>
+                I imported the SolidWorks geometry into ANSYS HFSS and solved for the cavity’s
+                resonant modes and electric-field distribution. The primary simulated resonance was
+                <strong>10.56 GHz</strong>, followed by modes near 13.53 and 13.84 GHz.
+              </p>
+              <p>
+                The simulation confirmed that the selected geometry placed a strong electric field
+                across the sample path and gave me a pre-machining prediction to compare with the
+                physical cavity. The measured primary resonance was 10.25 GHz, a 2.93% difference
+                from the simulated result.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="fabrication-testing">
+          <h2 class="case-section__label">Machining and VNA test setup</h2>
+          <div class="case-section__prose case-section__prose--measure">
+            <p>
+              After completing the CAD and simulation, I had the cavity machined from 6061 aluminum,
+              assembled the two 50 Ω SMA flange-mount receptacles, and connected it to an Anritsu
+              MS46524B VNA. I calibrated Ports 1 and 2 before collecting each set of s2p data, first
+              with the cavity empty and then with FEP and ePTFE insulated-wire samples threaded
+              through the center.
+            </p>
+          </div>
+          <figure class="case-figure case-figure--wide">
+            <img src="../assets/cavity/vna-setup.jpg" alt="Cavity resonator connected to an Anritsu VNA on the Glenair test bench" width="4032" height="3024" loading="lazy" />
+            <figcaption>Two-port VNA setup used to acquire empty-cavity and loaded-cavity S-parameters.</figcaption>
+          </figure>
+          <div class="case-gallery case-gallery--two case-gallery--photos">
+            <figure class="case-figure">
+              <img src="../assets/cavity/resonator-top.jpg" alt="Top view of the machined cavity resonator" width="1512" height="1893" loading="lazy" />
+              <figcaption>Machined assembly and probe hardware.</figcaption>
+            </figure>
+            <figure class="case-figure">
+              <img src="../assets/cavity/resonator-loaded.jpg" alt="Cavity resonator connected to VNA cables with an ePTFE wire sample inserted" width="4032" height="3024" loading="lazy" />
+              <figcaption>Loaded-cavity measurement with an insulated conductor inserted through the sample path.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="software">
+          <h2 class="case-section__label">Python VNA analysis application</h2>
+          <div class="case-section__prose case-section__prose--measure">
+            <p>
+              The VNA exported Touchstone s2p files, so I wrote a Python desktop application to turn
+              those raw measurements into repeatable engineering analysis. Its UI let me load data,
+              choose S-parameter magnitude or phase traces, overlay S<sub>11</sub> and S<sub>21</sub>,
+              inspect values near a target frequency, and export publication-ready plots.
+            </p>
+            <p>
+              That software made the resonance-selection step transparent: the same view could show
+              the S<sub>21</sub> transmission peak and supporting S<sub>11</sub> behavior, while
+              annotations recorded the exact frequency and dB values used in the calculations.
+            </p>
+          </div>
+          <figure class="case-figure case-figure--wide">
+            <img src="../assets/cavity/empty-cavity-overlay.png" alt="Python-generated overlay of empty-cavity S21 and S11 traces around 10.25 gigahertz" width="3433" height="1361" loading="lazy" />
+            <figcaption>Python-generated S<sub>21</sub>/S<sub>11</sub> overlay marking the empty-cavity resonance at 10.25 GHz.</figcaption>
+          </figure>
+        </section>
+
+        <section class="case-section reveal" id="results">
+          <h2 class="case-section__label">Measured shifts and dielectric estimates</h2>
+          <div class="case-table-wrap">
+            <table class="case-table">
+              <thead>
+                <tr>
+                  <th scope="col">Configuration</th>
+                  <th scope="col">S<sub>21</sub> resonance</th>
+                  <th scope="col">Frequency shift</th>
+                  <th scope="col">Estimated ε′</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Empty cavity</th>
+                  <td>10.250 GHz</td>
+                  <td>Baseline</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <th scope="row">42-thou FEP</th>
+                  <td>10.210 GHz</td>
+                  <td>−40 MHz</td>
+                  <td>2.10</td>
+                </tr>
+                <tr>
+                  <th scope="row">42-thou ePTFE</th>
+                  <td>10.238 GHz</td>
+                  <td>−12 MHz</td>
+                  <td>1.33</td>
+                </tr>
+                <tr>
+                  <th scope="row">80-thou ePTFE</th>
+                  <td>10.160 GHz</td>
+                  <td>−90 MHz</td>
+                  <td>1.60</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="case-results-note">
+            The 42-thou ePTFE sample occupied too little of the field region for a reliable result;
+            the larger 80-thou sample produced the stronger shift and the independently validated estimate.
+          </p>
+
+          <div class="case-gallery case-gallery--two">
+            <figure class="case-figure">
+              <img src="../assets/cavity/fep-overlay.png" alt="VNA overlay for the FEP-loaded cavity showing a resonance near 10.21 gigahertz" width="2742" height="1145" loading="lazy" />
+              <figcaption>FEP sample: the primary S<sub>21</sub> resonance shifted to 10.21 GHz.</figcaption>
+            </figure>
+            <figure class="case-figure">
+              <img src="../assets/cavity/eptfe-overlay.png" alt="VNA overlay for the larger ePTFE-loaded cavity showing a resonance near 10.16 gigahertz" width="2742" height="1145" loading="lazy" />
+              <figcaption>80-thou ePTFE sample: the primary S<sub>21</sub> resonance shifted to 10.16 GHz.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="validation">
+          <h2 class="case-section__label">Independent validation</h2>
+          <div class="case-validation">
+            <div>
+              <span>Cable velocity factor</span>
+              <strong>78.57%</strong>
+            </div>
+            <div class="case-validation__arrow" aria-hidden="true">→</div>
+            <div>
+              <span>Velocity-derived ε<sub>eff</sub></span>
+              <strong>1.62</strong>
+            </div>
+            <div class="case-validation__arrow" aria-hidden="true">↔</div>
+            <div>
+              <span>Cavity-derived ε<sub>eff</sub></span>
+              <strong>1.60</strong>
+            </div>
+          </div>
+          <div class="case-section__prose case-section__prose--measure">
+            <p>
+              For a nonmagnetic TEM cable, ε<sub>eff</sub> ≈ 1/VF<sup>2</sup>. The official cable
+              velocity factor therefore implied an effective relative permittivity of 1.6199, while
+              the cavity calculation produced 1.6008. The <strong>1.18% difference</strong> was the
+              key proof-of-concept result: the measured S<sub>21</sub> shift, field-interaction model,
+              and perturbation equation recovered a realistic dielectric value.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-section reveal" id="limitations">
+          <h2 class="case-section__label">Limitations and next iteration</h2>
+          <ul class="case-list">
+            <li><strong>Filling factor:</strong> analytically approximated rather than extracted from a fully calibrated HFSS field-energy integral.</li>
+            <li><strong>Conductor perturbation:</strong> the metal center conductor also changes the field and was not independently removed from the estimate.</li>
+            <li><strong>Sample openings:</strong> air gaps between smaller samples and the 2 mm insertion holes can reduce the apparent permittivity.</li>
+            <li><strong>Non-ideal geometry:</strong> probes, seams, holes, and machining tolerances move the physical cavity away from the ideal analytical model.</li>
+            <li><strong>Next step:</strong> add a bare-conductor reference, an 80-thou FEP sample, repeated runs, and an HFSS-derived filling factor.</li>
+          </ul>
+        </section>
+
+        <section class="case-section case-section--paper reveal" id="paper">
+          <div class="case-paper__header">
+            <div>
+              <h2 class="case-section__label">Full technical paper</h2>
+              <p class="case-section__intro">
+                My 12-page report contains the derivation, dimensions, VNA interpretation,
+                complete measurement table, dielectric calculations, and conclusions.
+              </p>
+            </div>
+            <a class="btn-download btn-download--ghost" href="../assets/papers/cavity-resonator-documentation.pdf" target="_blank" rel="noopener">
+              Open PDF
+            </a>
+          </div>
+          <div class="paper-embed">
+            <iframe
+              src="../assets/papers/cavity-resonator-documentation.pdf#view=FitH"
+              title="Wire Insert TE101 Rectangular Cavity Resonator report by Alex Popov"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </section>
+
+        <section class="case-section case-section--closing reveal">
+          <h2 class="case-section__label">Engineering outcome</h2>
+          <p class="case-outcome">
+            The completed instrument demonstrated a practical route from measured microwave
+            transmission data to an estimated dielectric constant for real RF-cable insulation—and
+            it did so through hardware, simulation, test automation, and analytical validation that I
+            owned as one connected engineering system.
+          </p>
+          <p class="project__tags">
+            SolidWorks · ANSYS HFSS · Microwave cavities · TE modes · S-parameters · Anritsu VNA · Python · Touchstone · Cavity perturbation · Machining · Experimental validation
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="footer__copy">© 2026 Alex Popov</p>
+        <div class="footer__links">
+          <a href="../index.html#top">Top</a>
+          <a href="../index.html#experience">Experience</a>
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -32,6 +32,7 @@
         </button>
 
         <div class="nav__links" data-nav-links>
+          <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
           <a href="#leadership">Leadership</a>
           <a href="#skills">Skills</a>
@@ -46,20 +47,17 @@
         <div class="container hero__inner">
           <h1 class="hero__display">
             <span class="hero__display-name">Alex Popov</span>
-            <span class="hero__display-tagline">design · robtic systems · programming</span>
+            <span class="hero__display-tagline">design · robotic systems · programming</span>
           </h1>
 
           <div class="hero__layout">
             <div class="hero__copy">
               <p class="hero__lede">
-                3/2 Engineering Physics and Computer Science student at the
-                University of Redlands. My work sits at the intersection of <strong>experimental
-                instrumentation</strong>, <strong>prototyping</strong>, <strong>system design</strong>, and <strong>software</strong> — CAD, analog signal conditioning, embedded
-                firmware, and validation with bench instruments and field tests.
+                I studied physics and computer science at the University of Redlands and am now pursuing electrical engineering at Columbia University. My work sits at the intersection of experimental instrumentation, RF and microwave systems, prototyping, system design, and software—from CAD and analog signal conditioning to embedded firmware, test automation, and validation with bench instruments and field tests.
               </p>
               <p class="hero__body">
                 I’m motivated by R&amp;D-style problems: defining measurable requirements, iterating on
-                hardware and algorithms, and documenting results clearly. I also lead student teams
+                hardware and algorithms, and documenting results clearly. I've also led student teams
                 (robotics, SEDS) where the goal is to ship defensible technology on a timeline.
               </p>
             
@@ -86,6 +84,82 @@
               </div>
             </figure>
           </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section section--band section--experience">
+        <div class="container">
+          <h2 class="section__label">Experience</h2>
+
+          <article class="experience reveal">
+            <div class="experience__header">
+              <div class="experience__identity">
+                <div class="experience__logo-frame">
+                  <img
+                    class="experience__logo"
+                    src="./assets/glenair-logo.png"
+                    alt="Glenair logo"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <p class="experience__role">R&amp;D RF Engineering Intern</p>
+                  <h3 class="experience__company">Glenair</h3>
+                  <p class="experience__date">June 1 – August 21, 2026</p>
+                </div>
+              </div>
+
+              <p class="experience__summary">
+                Developed software and RF-test proof-of-concept systems for cable manufacturing,
+                dielectric characterization, and automated antenna verification. The work combined
+                signal processing, microwave measurements, mechanical design, electronics, and
+                production-facing software.
+              </p>
+            </div>
+
+            <div class="experience__projects" aria-label="Selected Glenair internship work">
+              <article class="experience-project">
+                <p class="experience-project__eyebrow">Manufacturing software · DSP</p>
+                <h4 class="experience-project__title">Live Cable OD &amp; FFT Analysis Software</h4>
+                <p>
+                  Built production-facing software for RF cable manufacturing that streamed outer
+                  diameter measurements from LaserLinc laser gauges over OPC UA. The application
+                  performed live spatial FFT analysis, local-defect detection, PASS/FAIL logic,
+                  pause and reconnection handling, and automated engineering exports.
+                </p>
+              </article>
+
+              <a
+                class="experience-project experience-project--link"
+                href="./projects/microwave-cavity-resonator.html"
+                aria-label="Open case study: microwave cavity resonator"
+              >
+                <p class="experience-project__eyebrow">RF instrumentation · Material characterization</p>
+                <h4 class="experience-project__title">Microwave Cavity Resonator</h4>
+                <p>
+                  Designed, simulated, manufactured, and VNA-tested a TE<sub>101</sub> resonator to
+                  estimate the effective permittivity of finished PTFE and FEP cable-insulation
+                  constructions.
+                </p>
+                <span class="btn-text-arrow">View case study</span>
+              </a>
+
+              <article class="experience-project">
+                <p class="experience-project__eyebrow">Embedded RF test · Proof of concept</p>
+                <h4 class="experience-project__title">Handheld Antenna PASS/FAIL Tester</h4>
+                <p>
+                  Integrated a Raspberry Pi, NanoVNA, display, battery power system, calibration
+                  recall, and automated 902–928 MHz sweeps into a field-oriented antenna verification
+                  prototype.
+                </p>
+              </article>
+            </div>
+
+            <p class="experience__contribution">
+              <strong>Additional team contribution:</strong> supported the development and testing of
+              two high-speed cable constructions with Glenair’s high-speed cable engineering team.
+            </p>
+          </article>
         </div>
       </section>
 
@@ -245,7 +319,7 @@
             <div class="prose-block prose-block--tight reveal">
               <h3 class="prose-block__title">Mechanical / CAD</h3>
               <p>
-                SolidWorks, Onshape, AutoCAD, rotational mechanics, crank mechanisms, simulations, MATLAB.
+                SolidWorks, device enclosure design, rotational mechanics, crank mechanisms, MATLAB.
               </p>
              <!--<p class="skill-inline">SolidWorks · Onshape · AutoCAD · MATLAB</p> -->
             </div>
@@ -253,14 +327,14 @@
             <div class="prose-block prose-block--tight reveal">
               <h3 class="prose-block__title">Electronics</h3>
               <p>
-                Circuit and PCB design, LTSpice, Altium Designer, bench instruments, soldering.
+                Circuit and PCB design, Altium Designer, bench instruments, ANSYS HFSS, RF, VNAs, soldering.
               </p>
               
             </div>
 
             <div class="prose-block prose-block--tight reveal">
               <h3 class="prose-block__title">Software / AI</h3>
-              <p>Python, deep learning (CNNs), DSP.</p>
+              <p>Python, C, deep learning (CNNs), DSP.</p>
               
             </div>
 
@@ -273,6 +347,8 @@
         </div>
       </section>
 
+
+<!--
       <section id="about" class="section section--band">
         <div class="container">
           <h2 class="section__label">About</h2>
@@ -297,6 +373,8 @@
           </div>
         </div>
       </section>
+
+    -->
 
       <section id="contact" class="section section--contact">
         <div class="container">
@@ -323,6 +401,7 @@
         <p class="footer__copy">© 2026 Alex Popov</p>
         <div class="footer__links">
           <a href="#top">Top</a>
+          <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
         </div>
